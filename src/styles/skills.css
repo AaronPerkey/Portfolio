@@ -1,0 +1,61 @@
+.skills {
+  width: 100%;
+  padding: clamp(2rem, 4vh, 4rem) clamp(1.5rem, 4vw, 4rem);
+  max-width: min(92vw, 1700px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.skills__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
+}
+
+.skills__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  opacity: 0.4;
+}
+
+.skills__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.8vw, 3.25rem);
+  color: var(--ink);
+}
+
+.skills__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.skills__group-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  opacity: 0.45;
+  margin-bottom: 0.75rem;
+}
+
+.skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent-mid);
+  color: var(--ink);
+  background: var(--cream);
+}

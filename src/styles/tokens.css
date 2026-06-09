@@ -1,0 +1,11 @@
+:root {
+  --cream: #F5F0E8;
+  --ink: #0F0D0A;
+  --accent: #C8502A;
+  --accent-dim: rgba(200, 80, 42, 0.7);
+  --accent-mid: rgba(200, 80, 42, 0.88);
+
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
