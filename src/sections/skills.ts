@@ -25,18 +25,6 @@ export function renderSkills(): string {
           ${groups}
         </div>
       </div>
-      <footer class="footer" id="contact">
-        <p class="footer__brand">Aaron <em>Perkey</em></p>
-        <div class="footer__contact">
-          <p class="footer__contact-label">Get in touch</p>
-          <!-- TODO: replace you@email.com with your real email -->
-          <a href="mailto:you@email.com">you@email.com</a>
-          <!-- TODO: replace # with your real LinkedIn URL -->
-          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-          <!-- TODO: replace # with your real GitHub URL -->
-          <a href="#" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </footer>
     </section>
   `;
 }

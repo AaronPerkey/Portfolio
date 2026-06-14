@@ -10,16 +10,12 @@ export function renderWork(): string {
     .map(
       (p) => `
     <article class="poster reveal" data-project="${p.id}" style="--gradient: ${p.gradient}">
-      <div class="poster__art">
-        <span class="poster__glyph">${p.glyph}</span>
+      <div class="poster__art"${p.poster ? ` style="background-image: url('${p.poster}')"` : ''}>
+        ${p.poster ? '' : `<span class="poster__glyph">${p.glyph}</span>`}
       </div>
       <div class="poster__panel">
         <p class="poster__type">${p.type}</p>
         <h3 class="poster__name">${p.name}</h3>
-        <p class="poster__desc">${p.desc}</p>
-        <div class="poster__chips">
-          ${p.tech.map((t) => `<span class="chip">${t}</span>`).join('')}
-        </div>
       </div>
     </article>
   `
@@ -27,7 +23,7 @@ export function renderWork(): string {
     .join('');
 
   return `
-    <section class="panel" id="work">
+    <section class="panel" id="projects">
       <div class="work">
         <div class="work__header reveal">
           <span class="work__label">01</span>

@@ -1,112 +1,114 @@
 .hero {
+  overflow: hidden;
+}
+
+/* Full-bleed background photo */
+.hero-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
-  padding: 0 clamp(1.5rem, 4vw, 4rem);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: brightness(0.55) sepia(0.35) saturate(1.4);
+}
+
+/* Radial darkening so the photo doesn't blow out the edges */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(15, 13, 10, 0.65) 100%);
+}
+
+/* Left-to-right fade so the name stays legible over the photo */
+.left-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to right, rgba(15, 13, 10, 0.85) 0%, transparent 70%);
+}
+
+/* Cutout portrait, bottom-anchored to the right edge */
+.hero-figure {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: clamp(12px, 4vw, 70px); /* tuning knob: slide toward/away from the right edge */
+  height: 108%; /* tuning knob: raise to enlarge, lower to shrink (crops from the top) */
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
   max-width: min(92vw, 1700px);
   margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
   box-sizing: border-box;
 }
 
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-.hero__eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.75); }
-}
-
+/* Staircase name treatment */
 .hero__name {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   font-size: clamp(3.5rem, 10vw, 7rem);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 1.5rem;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 245, 230, 0.95);
 }
 
-.hero__name em {
-  font-style: italic;
-  color: var(--accent);
+.hero__name-line {
+  display: block;
+}
+
+.hero__name-line--accent {
+  margin-left: clamp(32px, 6vw, 90px);
+}
+
+.hero__bar {
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin: 1.75rem 0 1.25rem;
 }
 
 .hero__sub {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  font-weight: 300;
-  line-height: 1.75;
-  max-width: 540px;
-  color: var(--ink);
-  opacity: 0.75;
-  margin-bottom: 2.5rem;
-}
-
-.hero__ctas {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero__cta {
-  display: inline-flex;
-  align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  padding: 0.65rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--accent);
-  transition: background 0.2s, color 0.2s;
-}
-
-.hero__cta--primary {
-  background: var(--accent);
-  color: var(--cream);
-}
-
-.hero__cta--primary:hover {
-  background: transparent;
+  letter-spacing: 0.14em;
   color: var(--accent);
-}
-
-.hero__cta--secondary {
-  background: transparent;
-  color: var(--accent);
-}
-
-.hero__cta--secondary:hover {
-  background: var(--accent);
-  color: var(--cream);
 }
 
 /* Scroll cue — pinned to bottom of hero panel */
 .scroll-cue {
   position: absolute;
+  z-index: 4;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--ink);
-  opacity: 0.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
   animation: bob 2s ease-in-out infinite;
+}
+
+.scroll-cue__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 
 .scroll-cue svg {

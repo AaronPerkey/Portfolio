@@ -56,6 +56,8 @@
   position: absolute;
   inset: 0;
   background: var(--gradient);
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,29 +105,6 @@
   line-height: 1.2;
 }
 
-.poster__desc {
-  font-size: 0.78rem;
-  color: rgba(245, 240, 232, 0.7);
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-}
-
-.poster__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.chip {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--accent-dim);
-  color: rgba(245, 240, 232, 0.85);
-  background: transparent;
-}
-
 /* ── Project detail modal ── */
 .modal-overlay {
   position: fixed;
@@ -150,10 +129,11 @@
 
 .modal-body {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: clamp(280px, 32vw, 560px) minmax(0, 1fr);
   width: 100%;
-  max-width: 860px;
-  max-height: 90vh;
+  max-width: min(1720px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  min-width: 0;
   border-radius: 16px;
   overflow: hidden;
   background: var(--cream);
@@ -162,17 +142,18 @@
 
 /* Left column */
 .modal-info {
-  padding: 2.5rem 2rem;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: clamp(1rem, 2vw, 2rem);
   overflow-y: auto;
+  min-width: 0;
   background: var(--cream);
 }
 
 .modal-name {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
   color: var(--ink);
   line-height: 1.2;
   margin: 0;
@@ -182,8 +163,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: clamp(40px, 6vw, 80px);
+  height: clamp(40px, 6vw, 80px);
   border-radius: 10px;
   color: rgba(15, 13, 10, 0.65);
   border: 1px solid rgba(15, 13, 10, 0.12);
@@ -193,8 +174,8 @@
 }
 
 .modal-gh svg {
-  width: 19px;
-  height: 19px;
+  width: clamp(19px, 2.8vw, 38px);
+  height: clamp(19px, 2.8vw, 38px);
   display: block;
 }
 
@@ -207,23 +188,29 @@
 
 .modal-stack-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.65rem, 1.5vw, 1.3rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--ink);
   opacity: 0.45;
-  margin-top: 0.5rem;
+  margin-top: clamp(0.5rem, 1vw, 1rem);
+}
+
+.modal-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 2rem);
 }
 
 .stack-row {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: clamp(0.4rem, 0.9vw, 0.8rem);
 }
 
 .stack-role {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: clamp(0.62rem, 1.4vw, 1.24rem);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
@@ -232,13 +219,13 @@
 .stack-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: clamp(0.35rem, 0.8vw, 0.7rem);
 }
 
 .stack-tag {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  padding: 0.2rem 0.55rem;
+  font-size: clamp(0.65rem, 1.5vw, 1.3rem);
+  padding: clamp(0.2rem, 0.45vw, 0.4rem) clamp(0.55rem, 1.25vw, 1.1rem);
   border-radius: 8px;
   border: 1px solid rgba(200, 80, 42, 0.88);
   color: var(--ink);
@@ -248,7 +235,9 @@
 /* Right column */
 .modal-media {
   position: relative;
-  min-height: 480px;
+  overflow: hidden;
+  min-width: 0;
+  min-height: clamp(480px, 85vh, 960px);
   background-color: #1a1714;
   background-size: cover;
   background-position: center;
@@ -260,21 +249,32 @@
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(to top, rgba(15, 13, 10, 0.85) 0%, transparent 55%);
   pointer-events: none;
 }
 
+.modal-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  z-index: 0;
+}
+
 .modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 36px;
-  height: 36px;
+  top: clamp(1rem, 2vw, 2rem);
+  right: clamp(1rem, 2vw, 2rem);
+  width: clamp(36px, 5.5vw, 72px);
+  height: clamp(36px, 5.5vw, 72px);
   border-radius: 50%;
   border: 1px solid rgba(245, 240, 232, 0.25);
   background: rgba(15, 13, 10, 0.5);
   color: rgba(245, 240, 232, 0.85);
-  font-size: 1.1rem;
+  font-size: clamp(1.1rem, 2.8vw, 2.2rem);
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -292,8 +292,8 @@
 .modal-desc {
   position: relative;
   z-index: 2;
-  padding: 2rem;
-  font-size: 0.9rem;
+  padding: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(0.9rem, 2vw, 1.8rem);
   line-height: 1.7;
   color: rgba(245, 240, 232, 0.88);
 }
@@ -305,6 +305,6 @@
     overflow-y: auto;
   }
   .modal-media {
-    min-height: 240px;
+    min-height: clamp(240px, 60vh, 480px);
   }
 }

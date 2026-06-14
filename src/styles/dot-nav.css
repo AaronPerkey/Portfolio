@@ -1,0 +1,79 @@
+.dot-nav {
+  position: fixed;
+  top: 50%;
+  right: clamp(1rem, 3vw, 2.5rem);
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.dot-nav__dot {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--cream);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.dot-nav__dot:hover {
+  transform: scale(1.3);
+}
+
+.dot-nav__label {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 14px);
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dot-nav__dot:hover .dot-nav__label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.dot-nav__divider {
+  width: 10px;
+  height: 1px;
+  background: var(--cream);
+  opacity: 0.3;
+}
+
+/* Contact dot is always orange-filled — never participates in the active/observer logic */
+.dot-nav__dot--contact {
+  background: var(--accent);
+}
+
+/* on-light: toggled when the intersecting section isn't #hero (cream background) */
+.dot-nav.on-light .dot-nav__dot {
+  border-color: var(--ink);
+}
+
+.dot-nav.on-light .dot-nav__label {
+  color: var(--ink);
+}
+
+.dot-nav.on-light .dot-nav__divider {
+  background: var(--ink);
+}
+
+.dot-nav__dot.active,
+.dot-nav.on-light .dot-nav__dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}

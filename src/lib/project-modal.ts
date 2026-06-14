@@ -1,9 +1,6 @@
 import type { Project } from '../data/projects';
 
-export function initProjectModal(
-  projects: Record<string, Project>,
-  setModalOpen: (v: boolean) => void
-): void {
+export function initProjectModal(projects: Record<string, Project>): void {
   const overlay = document.querySelector<HTMLElement>('.modal-overlay')!;
   if (!overlay) return;
 
@@ -18,7 +15,25 @@ export function initProjectModal(
     (getEl('modalGh') as HTMLAnchorElement).href = p.github || '#';
     getEl('modalDesc').textContent = p.desc || '';
     const mediaEl = getEl('modalMedia');
-    mediaEl.style.backgroundImage = p.media ? `url('${p.media}')` : '';
+
+    const existingVideo = document.getElementById('modalVideo');
+    if (existingVideo) existingVideo.remove();
+
+    if (p.media.endsWith('.mp4')) {
+      mediaEl.style.backgroundImage = '';
+      const video = document.createElement('video');
+      video.id = 'modalVideo';
+      video.className = 'modal-video';
+      video.src = p.media;
+      video.autoplay = true;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      mediaEl.insertBefore(video, mediaEl.firstChild);
+    } else {
+      mediaEl.style.backgroundImage = p.media ? `url('${p.media}')` : '';
+    }
+
     getEl('modalStack').innerHTML = (p.stack || [])
       .map(
         (r) => `
@@ -29,12 +44,12 @@ export function initProjectModal(
       )
       .join('');
     overlay.classList.add('open');
-    setModalOpen(true);
   }
 
   function close(): void {
     overlay.classList.remove('open');
-    setModalOpen(false);
+    const existingVideo = document.getElementById('modalVideo');
+    if (existingVideo) existingVideo.remove();
   }
 
   document.querySelectorAll<HTMLElement>('.poster[data-project]').forEach((card) => {

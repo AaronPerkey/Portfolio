@@ -6,7 +6,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity; /* gentle fallback; JS drives the real snap */
   height: 100%;
 }
 
@@ -34,16 +33,14 @@ body::before {
   color: var(--cream);
 }
 
-/* Full-screen snap panel */
+/* Full-screen section */
 .panel {
   min-height: 100vh;
   min-height: 100svh; /* avoids mobile address-bar jump */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative; /* anchors the pinned footer in the skills panel */
+  position: relative; /* positioning context for absolutely-positioned children, e.g. .scroll-cue */
 }
 
 /* Scroll-reveal base state */

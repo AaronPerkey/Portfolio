@@ -29,27 +29,29 @@ export function renderAbout(): string {
         <div class="about__body">
           <div class="about__left reveal">
             <div class="about__photo">
-              <!-- TODO: replace with <img src="/images/headshot.jpg" alt="Aaron Perkey" /> -->
-              <img src="/images/headshot.jpg" alt="Aaron Perkey" />
-              <span class="about__photo-initials">AP</span>
+              <img src="/images/aboutme.png" alt="Aaron Perkey" />
             </div>
             <div class="socials">
-              <!-- TODO: replace href values with real URLs/email -->
-              <a href="mailto:you@email.com" aria-label="Email" title="Email">${EMAIL_ICON}</a>
-              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">${LINKEDIN_ICON}</a>
-              <a href="#" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">${GITHUB_ICON}</a>
+              <a href="mailto:aarontperkey@gmail.com" aria-label="Email" title="Email">${EMAIL_ICON}</a>
+              <a href="https://www.linkedin.com/in/aaronperkey1/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">${LINKEDIN_ICON}</a>
+              <a href="https://github.com/AaronPerkey" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">${GITHUB_ICON}</a>
             </div>
           </div>
           <div class="about__bio reveal">
             <h3>Hi, I'm Aaron.</h3>
-            <!-- TODO: replace with your real bio -->
             <p>
-              I'm a software engineer with a background in computer science and mathematics.
-              I care about writing code that's clear, correct, and worth maintaining.
+              Computer Science graduate from the University of Nebraska who builds full-stack web applications. 
+              I primarily work in C#, Python, and SQL, and have experience with React, Angular, .NET, and MySQL.
             </p>
             <p>
-              When I'm not building things, you'll find me thinking about systems design,
-              contributing to open source, or exploring something new.
+              As part of my senior design program, I helped design and build a web app that tracks warranty information for over 8,000 semi-truck parts. 
+              I worked across the full stack and was responsible for developing new features and resolving issues throughout the platform. I enjoy projects like this, where the goal is to take a disorganized process and build something that brings structure to it.
+            </p>
+            <p>
+              My background covers web development, database-backed applications, automation tools, and data analysis. I focus on writing clean code and building software that holds up over time.
+            </p>
+            <p>
+              I'm interested in full-stack or backend roles where I can work on real features and continue growing as a developer.
             </p>
           </div>
         </div>
