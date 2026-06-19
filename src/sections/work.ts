@@ -47,7 +47,7 @@ export function renderWork(): string {
           <div class="modal-stack" id="modalStack"></div>
         </div>
         <div class="modal-media" id="modalMedia">
-          <button class="modal-close" id="modalClose" aria-label="Close">&#215;</button>
+          <button class="modal-close" id="modalClose" aria-label="Close"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="4" x2="14" y2="14"/><line x1="14" y1="4" x2="4" y2="14"/></svg></button>
           <p class="modal-desc" id="modalDesc"></p>
         </div>
       </div>

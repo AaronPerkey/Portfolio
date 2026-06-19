@@ -14,6 +14,7 @@ import { renderDotNav } from './sections/dot-nav';
 import { initReveal } from './lib/reveal';
 import { initProjectModal } from './lib/project-modal';
 import { initDotNav } from './lib/dot-nav';
+import { initAboutTabs } from './lib/about-tabs';
 import { projects } from './data/projects';
 import type { Project } from './data/projects';
 
@@ -26,3 +27,4 @@ const projectMap: Record<string, Project> = Object.fromEntries(projects.map((p) 
 initProjectModal(projectMap);
 initReveal();
 initDotNav();
+initAboutTabs();

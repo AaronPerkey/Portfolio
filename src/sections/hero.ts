@@ -1,25 +1,128 @@
+const KW = (s: string) => `<span class="hero__code-kw">${s}</span>`;
+const CM = (s: string) => `<span class="hero__code-cm">${s}</span>`;
+const ST = (s: string) => `<span class="hero__code-str">${s}</span>`;
+
+const HERO_CHIP_ICONS: Record<string, string> = {
+  Python: `<svg aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08"/></svg>`,
+  Unity: `<svg aria-hidden="true" fill="currentColor" width="1em" height="1em" viewBox="0 0 24 24"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg>`,
+};
+
+const HERO_CHIPS: { label: string; icon?: string }[] = [
+  { label: 'C#' },
+  { label: 'Python', icon: HERO_CHIP_ICONS.Python },
+  { label: 'SQL' },
+  { label: 'Claude Code' },
+  { label: 'Unity', icon: HERO_CHIP_ICONS.Unity },
+];
+
+// Pseudo-code for the right-margin code-rain — white-space:pre so indentation is exact.
+const CODE_RAIN = `${CM('// solve core problems')}
+${KW('function')} solveProblem(
+  input: Problem
+): Solution {
+  ${KW('const')} approach = analyze(input);
+  ${KW('return')} implement(approach);
+}
+
+${KW('class')} Engineer {
+  ${KW('private')} skills: string[];
+
+  ${KW('constructor')}(
+    expertise: string[]
+  ) {
+    ${KW('this')}.skills = expertise;
+  }
+
+  build(project: Project) {
+    ${KW('return this')}.skills
+      .reduce((sol, skill) =&gt;
+        sol.apply(skill), project
+      );
+  }
+}
+
+${KW('const')} engineer = {
+  skills: [
+    ${ST("'TypeScript'")},
+    ${ST("'Python'")},
+    ${ST("'React'")},
+  ],
+  passion: ${ST('"clean code"')},
+  impact: ${ST('"shipping things"')},
+};`;
+
+const HERO_ICON_EMAIL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+  stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2"/>
+  <polyline points="3,5 12,13 21,5"/>
+</svg>`;
+
+const HERO_ICON_LINKEDIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+  stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="2" width="20" height="20" rx="5"/>
+  <line x1="8" y1="10" x2="8" y2="17"/>
+  <line x1="8" y1="6.5" x2="8" y2="7.5"/>
+  <line x1="12" y1="10" x2="12" y2="17"/>
+  <path d="M12 13a3 3 0 0 1 6 0v4"/>
+</svg>`;
+
+const HERO_ICON_GITHUB = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+  stroke-linecap="round" stroke-linejoin="round">
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+</svg>`;
+
 export function renderHero(): string {
   return `
     <section class="panel hero" id="hero">
-      <img class="hero-img" src="/images/hero_background.png" alt="" aria-hidden="true" />
-      <div class="vignette" aria-hidden="true"></div>
-      <div class="left-fade" aria-hidden="true"></div>
-      <img class="hero-figure" src="/images/aaron_cutout.png" alt="" aria-hidden="true" />
-      <div class="hero__content">
-        <h1 class="hero__name">
-          <span class="hero__name-line">Aaron</span>
-          <span class="hero__name-line hero__name-line--accent">Perkey</span>
-        </h1>
-        <div class="hero__bar" aria-hidden="true"></div>
-        <p class="hero__sub">B.S. Computer Science &middot; Developer</p>
+
+      <!-- Code rain: faint right-margin terminal texture, z-index 1 -->
+      <div class="hero__code-rain" aria-hidden="true">${CODE_RAIN}</div>
+
+      <!-- Portrait: anchored bottom-right with ember glow, z-index 3 -->
+      <div class="hero__portrait-wrap" aria-hidden="true">
+        <img class="hero__portrait" src="/images/hero_me.png" alt="" />
       </div>
-      <div class="scroll-cue" aria-hidden="true">
-        <span class="scroll-cue__label">Scroll</span>
-        <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"
-             stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="2,2 12,10 22,2"/>
+
+      <!-- Top bar: monogram, z-index 5 -->
+      <div class="hero__topbar" aria-hidden="true">
+        <div class="hero__monogram">
+          <span class="hero__monogram-box">A<span class="hero__monogram-p">P</span></span>
+          <span class="hero__monogram-name">AARON PERKEY</span>
+        </div>
+      </div>
+
+      <!-- Main text column, z-index 4 -->
+      <div class="hero__text">
+        <p class="hero__eyebrow">Computer Science Graduate</p>
+        <h1 class="hero__headline">
+          <span class="hero__hl-line">Building solutions.</span>
+          <span class="hero__hl-line hero__hl-accent">Solving problems.</span>
+        </h1>
+        <div class="hero__rule" aria-hidden="true"></div>
+        <p class="hero__body">Computer Science graduate with a passion for writing clean, efficient code and building user-focused applications. Eager to contribute, learn, and grow as a software engineer.</p>
+        <div class="hero__chips">
+          ${HERO_CHIPS.map(c => `<span class="hero__chip">${c.icon ?? ''}${c.label}</span>`).join('')}
+        </div>
+        <div class="hero__socials">
+          <a href="mailto:aarontperkey@gmail.com" aria-label="Email" title="Email">${HERO_ICON_EMAIL}</a>
+          <a href="https://www.linkedin.com/in/aaronperkey1/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">${HERO_ICON_LINKEDIN}</a>
+          <a href="https://github.com/AaronPerkey" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">${HERO_ICON_GITHUB}</a>
+        </div>
+        <div class="hero__location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Lincoln, NE
+        </div>
+      </div>
+
+      <!-- Scroll indicator: centered bottom, z-index 5 -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">SCROLL</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8502A"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6,9 12,15 18,9"/>
         </svg>
       </div>
+
     </section>
   `;
 }

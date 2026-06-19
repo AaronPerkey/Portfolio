@@ -7,29 +7,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1px;
 }
 
 .dot-nav__dot {
   position: relative;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-nav__dot-inner {
   width: 11px;
   height: 11px;
-  padding: 0;
   border-radius: 50%;
   border: 1.5px solid var(--cream);
   background: transparent;
-  cursor: pointer;
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  pointer-events: none;
 }
 
-.dot-nav__dot:hover {
+.dot-nav__dot:hover .dot-nav__dot-inner {
   transform: scale(1.3);
 }
 
 .dot-nav__label {
   position: absolute;
   top: 50%;
-  right: calc(100% + 14px);
+  right: calc(100% + 6.5px);
   transform: translateY(-50%) translateX(8px);
   white-space: nowrap;
   font-family: var(--font-mono);
@@ -55,12 +66,12 @@
 }
 
 /* Contact dot is always orange-filled — never participates in the active/observer logic */
-.dot-nav__dot--contact {
+.dot-nav__dot--contact .dot-nav__dot-inner {
   background: var(--accent);
 }
 
 /* on-light: toggled when the intersecting section isn't #hero (cream background) */
-.dot-nav.on-light .dot-nav__dot {
+.dot-nav.on-light .dot-nav__dot-inner {
   border-color: var(--ink);
 }
 
@@ -72,8 +83,8 @@
   background: var(--ink);
 }
 
-.dot-nav__dot.active,
-.dot-nav.on-light .dot-nav__dot.active {
+.dot-nav__dot.active .dot-nav__dot-inner,
+.dot-nav.on-light .dot-nav__dot.active .dot-nav__dot-inner {
   background: var(--accent);
   border-color: var(--accent);
 }

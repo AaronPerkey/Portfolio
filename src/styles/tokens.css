@@ -1,12 +1,19 @@
 :root {
+  /* Hero is dark ember; sections lighten downward toward canonical cream */
   --cream: #F5F0E8;
   --ink: #0F0D0A;
   --accent: #C8502A;
   --accent-dim: rgba(200, 80, 42, 0.7);
   --accent-mid: rgba(200, 80, 42, 0.88);
 
-  --font-display: 'DM Serif Display', serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
-  --font-body: 'Outfit', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --bg-projects: #E4DACB;
+  --bg-about:    #ECE4D6;
+  --bg-skills:   #F5F0E8;
+
+  --font-title: "Montserrat", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-label: "DM Mono", monospace;
+  --font-mono: "DM Mono", monospace;
+
+  --scale: 1.3;
 }

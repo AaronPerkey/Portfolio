@@ -26,10 +26,11 @@ export function renderAbout(): string {
           <span class="about__label">02</span>
           <h2 class="about__title">About Me</h2>
         </div>
-        <div class="about__body">
+        <div class="about__grid">
+
           <div class="about__left reveal">
             <div class="about__photo">
-              <img src="/images/aboutme.png" alt="Aaron Perkey" />
+              <img src="/images/aboutme_pro.png" alt="Aaron Perkey" style="object-position: center top" />
             </div>
             <div class="socials">
               <a href="mailto:aarontperkey@gmail.com" aria-label="Email" title="Email">${EMAIL_ICON}</a>
@@ -37,23 +38,89 @@ export function renderAbout(): string {
               <a href="https://github.com/AaronPerkey" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">${GITHUB_ICON}</a>
             </div>
           </div>
-          <div class="about__bio reveal">
-            <h3>Hi, I'm Aaron.</h3>
-            <p>
-              Computer Science graduate from the University of Nebraska who builds full-stack web applications. 
-              I primarily work in C#, Python, and SQL, and have experience with React, Angular, .NET, and MySQL.
-            </p>
-            <p>
-              As part of my senior design program, I helped design and build a web app that tracks warranty information for over 8,000 semi-truck parts. 
-              I worked across the full stack and was responsible for developing new features and resolving issues throughout the platform. I enjoy projects like this, where the goal is to take a disorganized process and build something that brings structure to it.
-            </p>
-            <p>
-              My background covers web development, database-backed applications, automation tools, and data analysis. I focus on writing clean code and building software that holds up over time.
-            </p>
-            <p>
-              I'm interested in full-stack or backend roles where I can work on real features and continue growing as a developer.
-            </p>
+
+          <div class="about__right reveal">
+            <div class="about__intro">
+              <h3 class="about__name">Aaron Perkey</h3>
+            </div>
+
+            <div class="about__tabs">
+              <div class="about__tabs-nav" role="tablist" aria-label="About sections">
+                <button
+                  role="tab"
+                  id="tab-btn-professional"
+                  aria-selected="true"
+                  aria-controls="tab-professional"
+                  class="about__tab-btn"
+                  tabindex="0"
+                  data-photo="/images/aboutme_pro.png"
+                  data-pos="center top"
+                >PROFESSIONAL</button>
+                <button
+                  role="tab"
+                  id="tab-btn-how-i-work"
+                  aria-selected="false"
+                  aria-controls="tab-how-i-work"
+                  class="about__tab-btn"
+                  tabindex="-1"
+                  data-photo="/images/aboutme_pro.png"
+                  data-pos="center top"
+                >HOW I WORK</button>
+                <button
+                  role="tab"
+                  id="tab-btn-hobbies"
+                  aria-selected="false"
+                  aria-controls="tab-hobbies"
+                  class="about__tab-btn"
+                  tabindex="-1"
+                  data-photo="/images/aboutme_hobbies.png"
+                  data-pos="right center"
+                >HOBBIES</button>
+              </div>
+
+              <div class="about__tab-panels">
+                <div
+                  role="tabpanel"
+                  id="tab-professional"
+                  aria-labelledby="tab-btn-professional"
+                  class="about__tab-panel"
+                >
+                  <p>
+                    I'm a Computer Science grad who works on full-stack and backend problems. 
+                    Most recently I built a warranty management system that tracks data across thousands of semi-truck parts. 
+                    That kind of project lives or dies on data integrity and clean architecture, so that's where I put my attention. 
+                    I aim to write code that is organized and holds up to the test of time.
+                  </p>
+                </div>
+                <div
+                  role="tabpanel"
+                  id="tab-how-i-work"
+                  aria-labelledby="tab-btn-how-i-work"
+                  class="about__tab-panel"
+                  hidden
+                >
+                  <p>
+                    I like to keep things simple, organized, and intentional. I start by understanding the problem, then work in small, 
+                    testable increments so nothing gets ahead of itself. I keep my work structured and easy to follow, and I care about 
+                    clean abstractions, clear naming, and code that still makes sense months later. I'm comfortable working on my own, 
+                    but I flag things early when they might affect the team.
+                  </p>
+                </div>
+                <div
+                  role="tabpanel"
+                  id="tab-hobbies"
+                  aria-labelledby="tab-btn-hobbies"
+                  class="about__tab-panel"
+                  hidden
+                >
+                  <p>
+                  Gaming has always been my main way to unwind, whether I'm chasing objectives solo or playing something with friends. Outside of that, I'm usually out on a trail or playing with my dog.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
