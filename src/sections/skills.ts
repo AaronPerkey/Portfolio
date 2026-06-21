@@ -70,7 +70,7 @@ export function renderSkills(): string {
     <section class="panel" id="skills">
       <div class="skills">
         <div class="skills__header reveal">
-          <span class="skills__label">03</span>
+          <span class="skills__label">02</span>
           <h2 class="skills__title">Skills</h2>
         </div>
         <div class="skills__groups">

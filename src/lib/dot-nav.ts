@@ -1,4 +1,4 @@
-const SECTION_IDS = ['hero', 'projects', 'about', 'skills'];
+const SECTION_IDS = ['hero', 'projects', 'skills'];
 
 export function initDotNav(): void {
   const nav = document.querySelector<HTMLElement>('.dot-nav');

@@ -5,79 +5,6 @@
   background: radial-gradient(130% 110% at 82% 45%, #1C1512 0%, #0F0B09 62%);
 }
 
-/* ── Code rain ── */
-
-.hero__code-rain {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 36%;
-  z-index: 1;
-  font-family: var(--font-mono);
-  font-size: 17px;
-  line-height: 1.9;
-  color: rgba(245, 240, 232, 0.55);
-  white-space: pre;
-  text-align: right;
-  pointer-events: none;
-  padding: 72px 32px 48px;
-  opacity: 0.10;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 55%, #000 100%);
-}
-
-.hero__code-kw { color: #C8502A; }
-.hero__code-cm { color: #6FAE7E; }
-.hero__code-str { color: #6FAE7E; }
-
-/* ── Portrait + ember glow ── */
-
-.hero__portrait-wrap {
-  position: absolute;
-  right: 5%;
-  bottom: 0;
-  height: 100%;
-  width: 50%;
-  z-index: 3;
-  pointer-events: none;
-  user-select: none;
-}
-
-.hero__portrait-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -40% -50% -15% -70%;
-  z-index: 1;
-  background: radial-gradient(
-    ellipse 100% 90% at 58% 80%,
-    rgba(200, 80, 42, 0.30) 0%,
-    rgba(200, 80, 42, 0.24) 15%,
-    rgba(200, 80, 42, 0.18) 28%,
-    rgba(200, 80, 42, 0.12) 40%,
-    rgba(200, 80, 42, 0.07) 55%,
-    rgba(200, 80, 42, 0.03) 72%,
-    rgba(200, 80, 42, 0.01) 86%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 12%);
-  pointer-events: none;
-}
-
-.hero__portrait {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom right;
-  filter: brightness(0.92) saturate(0.92);
-}
-
 /* ── Top bar ── */
 
 .hero__topbar {
@@ -243,25 +170,6 @@
   outline-offset: 3px;
 }
 
-/* ── Location ── */
-
-.hero__location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: rgba(245, 240, 232, 0.55);
-}
-
-.hero__location svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
 /* ── Scroll indicator ── */
 
 .hero__scroll {
@@ -304,11 +212,6 @@
 @media (max-width: 760px) {
   .hero {
     background: radial-gradient(130% 110% at 82% 45%, #1C1512 0%, #0F0B09 62%);
-  }
-
-  .hero__code-rain,
-  .hero__portrait-wrap {
-    display: none;
   }
 
   .hero__text {
