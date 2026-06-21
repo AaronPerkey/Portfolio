@@ -34,7 +34,6 @@ const HERO_ICON_GITHUB = `<svg viewBox="0 0 24 24" fill="none" stroke="currentCo
 export function renderHero(): string {
   return `
     <section class="panel hero" id="hero">
-
       <!-- Top bar: monogram, z-index 5 -->
       <div class="hero__topbar" aria-hidden="true">
         <div class="hero__monogram">
