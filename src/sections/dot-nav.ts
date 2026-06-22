@@ -5,9 +5,9 @@ export function renderDotNav(): string {
         <span class="dot-nav__dot-inner"></span>
         <span class="dot-nav__label">Home</span>
       </button>
-      <button class="dot-nav__dot" data-target="projects" aria-label="Featured work">
+      <button class="dot-nav__dot" data-target="projects" aria-label="Featured Projects">
         <span class="dot-nav__dot-inner"></span>
-        <span class="dot-nav__label">Work</span>
+        <span class="dot-nav__label">Featured Projects</span>
       </button>
       <button class="dot-nav__dot" data-target="skills" aria-label="Skills">
         <span class="dot-nav__dot-inner"></span>
