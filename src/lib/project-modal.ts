@@ -33,8 +33,9 @@ function renderStackHTML(stack: Project['stack']): string {
 }
 
 export function initProjectModal(projects: Record<string, Project>): void {
-  const overlay = document.querySelector<HTMLElement>('.modal-overlay')!;
-  if (!overlay) return;
+  const overlayEl = document.querySelector<HTMLElement>('.modal-overlay');
+  if (!overlayEl) return;
+  const overlay = overlayEl;
 
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
