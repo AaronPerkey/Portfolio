@@ -20,7 +20,7 @@ Vanilla TypeScript portfolio site built with Vite — no UI framework, no runtim
 
 **Rendering pattern:** Each `src/sections/*.ts` file exports a function that returns an HTML string. `main.ts` concatenates them and sets `innerHTML`. There is no virtual DOM or component lifecycle.
 
-**Sections & page order:** Four full-screen `.panel` sections render in order — `hero.ts` → `work.ts` (Featured Projects) → `about.ts` → `skills.ts`. The contact footer is markup at the bottom of `skills.ts`'s output, pinned via CSS — there is no separate `footer.ts`. `work.ts` renders the project posters plus a single `.modal-overlay` container; `initProjectModal()` populates it from `data/projects.ts` when a poster is clicked.
+**Sections & page order:** Three full-screen `.panel` sections render in order — `hero.ts` → `work.ts` (Featured Projects) → `skills.ts`. `work.ts` renders the project posters plus a single `.modal-overlay` container; `initProjectModal()` populates it from `data/projects.ts` when a poster is clicked.
 
 **Data layer:** `src/data/projects.ts` and `src/data/skills.ts` export typed arrays consumed by the section renderers.
 
@@ -41,6 +41,4 @@ Vanilla TypeScript portfolio site built with Vite — no UI framework, no runtim
 Outstanding items marked in the codebase:
 - Project content: `src/data/projects.ts` — all three entries are placeholders (names, descriptions, `github` URLs, `media`, `stack`)
 - Hero sub-copy: `src/sections/hero.ts`
-- Contact/social links (email, LinkedIn, GitHub): placeholders in both `src/sections/about.ts` (socials row) and `src/sections/skills.ts` (footer)
-
-Headshot is done: `public/images/headshot.jpg` exists and is referenced from `src/sections/about.ts`.
+- Contact/social links (email, LinkedIn, GitHub): placeholders in `src/sections/skills.ts` (footer)
