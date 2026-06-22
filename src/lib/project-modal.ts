@@ -1,5 +1,37 @@
 import type { Project } from '../data/projects';
 
+function createVideoElement(src: string): HTMLVideoElement {
+  const video = document.createElement('video');
+  video.id = 'modalMediaEl';
+  video.className = 'modal-video';
+  video.src = src;
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  return video;
+}
+
+function createImageElement(src: string, alt: string): HTMLImageElement {
+  const img = document.createElement('img');
+  img.id = 'modalMediaEl';
+  img.src = src;
+  img.alt = alt;
+  return img;
+}
+
+function renderStackHTML(stack: Project['stack']): string {
+  return (stack || [])
+    .map(
+      (r) => `
+      <div class="stack-row">
+        <div class="stack-role">${r.role}</div>
+        <div class="stack-tags">${r.tags.map((t) => `<span class="stack-tag">${t}</span>`).join('')}</div>
+      </div>`
+    )
+    .join('');
+}
+
 export function initProjectModal(projects: Record<string, Project>): void {
   const overlay = document.querySelector<HTMLElement>('.modal-overlay')!;
   if (!overlay) return;
@@ -83,35 +115,17 @@ export function initProjectModal(projects: Record<string, Project>): void {
 
     if (p.media) {
       if (p.media.endsWith('.mp4')) {
-        const video = document.createElement('video');
-        video.id = 'modalMediaEl';
-        video.className = 'modal-video';
-        video.src = p.media;
-        video.autoplay = true;
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
+        const video = createVideoElement(p.media);
         video.addEventListener('playing', () => startVideoSampling(video), { once: true });
         mediaEl.insertBefore(video, mediaEl.firstChild);
       } else {
-        const img = document.createElement('img');
-        img.id = 'modalMediaEl';
-        img.src = p.media;
-        img.alt = p.name;
+        const img = createImageElement(p.media, p.name);
         img.addEventListener('load', () => sampleBrightness(img), { once: true });
         mediaEl.insertBefore(img, mediaEl.firstChild);
       }
     }
 
-    getEl('modalStack').innerHTML = (p.stack || [])
-      .map(
-        (r) => `
-        <div class="stack-row">
-          <div class="stack-role">${r.role}</div>
-          <div class="stack-tags">${r.tags.map((t) => `<span class="stack-tag">${t}</span>`).join('')}</div>
-        </div>`
-      )
-      .join('');
+    getEl('modalStack').innerHTML = renderStackHTML(p.stack);
     overlay.classList.add('open');
   }
 
